@@ -1,4 +1,4 @@
-import type React from "react"
+import React, { useEffect } from "react"
 import "../styles/WordRevealPopup.css"
 
 interface WordRevealPopupProps {
@@ -8,6 +8,19 @@ interface WordRevealPopupProps {
 }
 
 const WordRevealPopup: React.FC<WordRevealPopupProps> = ({ word, isCorrect, onClose }) => {
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Enter") {
+        onClose()
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown)
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [onClose])
+
   return (
     <div className="word-reveal-overlay" onClick={onClose}>
       <div className="word-reveal-popup" onClick={(e) => e.stopPropagation()}>
@@ -19,4 +32,3 @@ const WordRevealPopup: React.FC<WordRevealPopupProps> = ({ word, isCorrect, onCl
 }
 
 export default WordRevealPopup
-
