@@ -1,0 +1,71 @@
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 1rem 0 2rem;
+  padding: 0 1rem;
+}
+
+.keyboard-row {
+  display: flex;
+  gap: 6px;
+}
+
+.key {
+  min-width: 43px;
+  height: 58px;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--key-bg);
+  color: var(--foreground);
+  font-family: inherit;
+  font-size: 1.125rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.key.correct {
+  background-color: #538d4e;
+  color: white;
+}
+
+.key.present {
+  background-color: #b59f3b;
+  color: white;
+}
+
+.key.absent {
+  background-color: #3a3a3c;
+  color: white;
+}
+
+.key:hover {
+  opacity: 0.9;
+}
+
+.key[data-key="ENTER"],
+.key[data-key="BACKSPACE"] {
+  min-width: 65px;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 500px) {
+  .key {
+    min-width: 32px;
+    height: 52px;
+    font-size: 0.875rem;
+  }
+
+  .key[data-key="ENTER"],
+  .key[data-key="BACKSPACE"] {
+    min-width: 48px;
+  }
+}
+
